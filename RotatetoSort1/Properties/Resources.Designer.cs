@@ -153,6 +153,25 @@ namespace RotatetoSort1.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap form2背景 {
+            get {
+                object obj = ResourceManager.GetObject("form2背景", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似于 System.IO.MemoryStream 的 System.IO.UnmanagedMemoryStream 类型的本地化资源。
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream 成功音效 {
+            get {
+                return ResourceManager.GetStream("成功音效", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap 紫色按钮_副本 {
             get {
                 object obj = ResourceManager.GetObject("紫色按钮_副本", resourceCulture);

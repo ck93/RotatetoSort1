@@ -8,27 +8,29 @@ using System.Text;
 using System.Windows.Forms;
 using System.Collections;
 using System.Threading;
+using System.Diagnostics;
+using System.Media;
 
 namespace RotatetoSort1
 {
     public partial class Form1 : Form
     {
         const int bgsize = 340;// picturebox尺寸
-        int n = 6;//数字个数
+        int n = 9;//数字个数
         int[] num;
         int[] numbackup;
         int step = 0;//步数
         bool solved = false;
+        //Stopwatch sw1 = new Stopwatch();
+        //Stopwatch sw2 = new Stopwatch();
         Stack<int> method = new Stack<int>();
         Stack<int> methodbackup = new Stack<int>();
         public Form1()
         {
             InitializeComponent();
-            comboBox1.SelectedIndex = 0;
-            comboBox2.SelectedIndex = 0;
+            comboBox1.SelectedIndex = 2;
+            comboBox2.SelectedIndex = 2;
             comboBoxItem1.SelectedIndex = 1;
-            buttonX3.Visible = false;
-            buttonX4.Visible = false;
         }
         class node
         {
@@ -211,44 +213,56 @@ namespace RotatetoSort1
 
         private void buttonX1_Click(object sender, EventArgs e)
         {
+            step++;
+            label4.Text = step.ToString();
             num = rotate1(num);
             RePaint4Stars(0, 1, 3, 4, num);
             if (victory(num))
-                MessageBox.Show("你赢了！");
+                MessageBox.Show("干得漂亮！", "完成");
         }
 
         private void buttonX2_Click(object sender, EventArgs e)
         {
+            step++;
+            label4.Text = step.ToString();
             num = rotate2(num);
             RePaint4Stars(1, 2, 4, 5, num);
             if (victory(num))
-                MessageBox.Show("你赢了！");
+                MessageBox.Show("干得漂亮！", "完成");
         }
 
         private void buttonX3_Click(object sender, EventArgs e)
         {
+            step++;
+            label4.Text = step.ToString();
             num = rotate3(num);
             RePaint4Stars(3, 4, 6, 7, num);
             if (victory(num))
-                MessageBox.Show("你赢了！");
+                MessageBox.Show("干得漂亮！", "完成");
         }
 
         private void buttonX4_Click(object sender, EventArgs e)
         {
+            step++;
+            label4.Text = step.ToString();
             num = rotate4(num);
             RePaint4Stars(4, 5, 7, 8, num);
             if (victory(num))
-                MessageBox.Show("你赢了！");
+                MessageBox.Show("干得漂亮！", "完成");
         }
-        private string GetKey(int[] num)
+        private long GetKey(int[] num)
         {
-            string temp = null;
-            int n = num.Length;
+            //sw1.Start();
+            long temp = 0;
+            int n = num.Length - 1;
+            int weight = 28;
             for (int i = 0; i < n; i++)
             {
-                temp += num[i].ToString();
+                temp += num[i]<<weight;
+                weight -= 4;
             }
-            return temp;
+           // sw1.Stop();
+            return temp;            
         }
         private void GetPath(node dest)
         {
@@ -280,7 +294,7 @@ namespace RotatetoSort1
                 node newnode1 = new node(old);
                 newnode1.array = rotate1(newnode1.array);
                 newnode1.rotate = 1;
-                string s1 = GetKey(newnode1.array);
+                long s1 = GetKey(newnode1.array);
                 if (!ht.ContainsKey(s1))
                 {
                     open.Enqueue(newnode1);
@@ -294,7 +308,7 @@ namespace RotatetoSort1
                 node newnode2 = new node(old);
                 newnode2.rotate = 2;
                 newnode2.array = rotate2(newnode2.array);
-                string s2 = GetKey(newnode2.array);
+                long s2 = GetKey(newnode2.array);
                 if (!ht.ContainsKey(s2))
                 {
                     open.Enqueue(newnode2);
@@ -310,7 +324,7 @@ namespace RotatetoSort1
                 node newnode3 = new node(old);
                 newnode3.rotate = 3;
                 newnode3.array = rotate3(newnode3.array);
-                string s3 = GetKey(newnode3.array);
+                long s3 = GetKey(newnode3.array);
                 if (!ht.ContainsKey(s3))
                 {
                     open.Enqueue(newnode3);
@@ -326,7 +340,7 @@ namespace RotatetoSort1
                 node newnode4 = new node(old);
                 newnode4.rotate = 4;
                 newnode4.array = rotate4(newnode4.array);
-                string s4 = GetKey(newnode4.array);
+                long s4 = GetKey(newnode4.array);
                 if (!ht.ContainsKey(s4))
                 {
                     open.Enqueue(newnode4);
@@ -355,7 +369,7 @@ namespace RotatetoSort1
             {
                 node old = open.Pop();
                 closed.Push(old);
-                if (old.depth >= 20)
+                if (old.depth >= 15)
                     continue;
                 if (old.rotate != 1 || old.parent.rotate != 1 || old.parent.rotate != 1)
                 {
@@ -465,7 +479,7 @@ namespace RotatetoSort1
                     node newnode1 = new node(bestnode);
                     newnode1.array = rotate1(newnode1.array);
                     newnode1.rotate = 1;
-                    string s1 = GetKey(newnode1.array);
+                    long s1 = GetKey(newnode1.array);
                     if (!ht.ContainsKey(s1))
                     {
                         open.Insert(binsearch(open, 0, open.Count - 1, f(newnode1)), newnode1);
@@ -477,7 +491,7 @@ namespace RotatetoSort1
                     node newnode2 = new node(bestnode);
                     newnode2.array = rotate2(newnode2.array);
                     newnode2.rotate = 2;
-                    string s2 = GetKey(newnode2.array);
+                    long s2 = GetKey(newnode2.array);
                     if (!ht.ContainsKey(s2))
                     {
                         open.Insert(binsearch(open, 0, open.Count - 1, f(newnode2)), newnode2);
@@ -491,7 +505,7 @@ namespace RotatetoSort1
                     node newnode3 = new node(bestnode);
                     newnode3.array = rotate3(newnode3.array);
                     newnode3.rotate = 3;
-                    string s3 = GetKey(newnode3.array);
+                    long s3 = GetKey(newnode3.array);
                     if (!ht.ContainsKey(s3))
                     {
                         open.Insert(binsearch(open, 0, open.Count - 1, f(newnode3)), newnode3);
@@ -505,7 +519,7 @@ namespace RotatetoSort1
                     node newnode4 = new node(bestnode);
                     newnode4.array = rotate4(newnode4.array);
                     newnode4.rotate = 4;
-                    string s4 = GetKey(newnode4.array);
+                    long s4 = GetKey(newnode4.array);
                     if (!ht.ContainsKey(s4))
                     {
                         open.Insert(binsearch(open, 0, open.Count - 1, f(newnode4)), newnode4);
@@ -519,10 +533,11 @@ namespace RotatetoSort1
             method.Clear();
             solved = false;
             num.CopyTo(numbackup, 0);
+            //sw2.Start();
             switch (comboBox2.SelectedIndex)
             {
-                case 0:
-                    BFS();
+                case 0:                    
+                    BFS();                    
                     break;
                 case 1:
                     DFS();
@@ -531,12 +546,27 @@ namespace RotatetoSort1
                     ASTAR();
                     break;
             }
+            //sw2.Stop();
             if (solved == true)
-                MessageBox.Show(method.Count.ToString());
+            {
+                if (MessageBox.Show("搜索完毕！需要" + method.Count.ToString() + "步完成，是否现在开始演示？若要稍后演示，请点“否”", "搜索结果", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    Thread.Sleep(1000);
+                    buttonX6_Click(sender, e);
+                }
+            }
+            else
+                MessageBox.Show("该初始状态不可能通过旋转排列好！");
+            //sw1.Reset();
+            //sw2.Reset();
+            //step = 0;
+            //label4.Text = step.ToString();
         }
 
         private void buttonX6_Click(object sender, EventArgs e)
         {
+            step = 0;
+            label4.Text = step.ToString();
             if (comboBoxItem1.SelectedIndex == 2)
             {
                 while (methodbackup.Count > 0)
@@ -545,9 +575,11 @@ namespace RotatetoSort1
                 }
                 numbackup.CopyTo(num, 0);
                 PaintStars();
-            }
+                comboBoxItem1.SelectedIndex = 1;
+                Thread.Sleep(500);
+            }           
             while (method.Count > 0)
-            {
+            {               
                 int i = method.Pop();
                 methodbackup.Push(i);
                 switch (i)
@@ -555,7 +587,6 @@ namespace RotatetoSort1
                     case 1:
                         num = rotate1(num);
                         RePaint4Stars(0, 1, 3, 4, num);
-                        Thread.Sleep(200);
                         break;
                     case 2:
                         num = rotate2(num);
@@ -570,18 +601,57 @@ namespace RotatetoSort1
                         RePaint4Stars(4, 5, 7, 8, num);
                         break;
                 }
+                step++;
+                label4.Text = step.ToString();
+                label4.Update();
                 if (comboBoxItem1.SelectedIndex == 0)
                     break;
                 Thread.Sleep(1000 - slider1.Value * 10);
             }
+            /*SoundPlayer player = new System.Media.SoundPlayer();
+            player.SoundLocation = @"D:\声音素材\success.wav";            
+            player.Load();
+            player.Play();*/
         }
 
         private void buttonX7_Click(object sender, EventArgs e)
         {
             method.Clear();
+            methodbackup.Clear();
             num = new int[n];
             RandomSort(num, n);
             PaintStars();
+            step = 0;
+            label4.Text = step.ToString();
+        }
+
+        private void buttonX8_Click(object sender, EventArgs e)
+        {
+            Form2 f = new Form2();
+            f.ShowDialog();
+            if (f.setok)
+            {
+                n = f.usernum.Length;
+                num = new int[n];
+                numbackup = new int[n];
+                f.usernum.CopyTo(num, 0);
+                method.Clear();
+                PaintStars();
+                solved = false;
+                step = 0;
+                label4.Text = step.ToString();
+            }
+        }
+
+        private void buttonX9_Click(object sender, EventArgs e)
+        {
+            method.Clear();
+            methodbackup.Clear();
+            solved = false;
+            numbackup.CopyTo(num, 0);
+            PaintStars();
+            step = 0;
+            label4.Text = step.ToString();
         }
 
     }

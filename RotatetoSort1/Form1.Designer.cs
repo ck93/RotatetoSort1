@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.buttonX4 = new DevComponents.DotNetBar.ButtonX();
             this.buttonX3 = new DevComponents.DotNetBar.ButtonX();
@@ -45,6 +46,10 @@
             this.slider1 = new DevComponents.DotNetBar.Controls.Slider();
             this.buttonX7 = new DevComponents.DotNetBar.ButtonX();
             this.label2 = new System.Windows.Forms.Label();
+            this.buttonX8 = new DevComponents.DotNetBar.ButtonX();
+            this.buttonX9 = new DevComponents.DotNetBar.ButtonX();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -170,7 +175,7 @@
             this.buttonX5.BackColor = System.Drawing.Color.Transparent;
             this.buttonX5.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.buttonX5.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.buttonX5.Location = new System.Drawing.Point(407, 220);
+            this.buttonX5.Location = new System.Drawing.Point(407, 242);
             this.buttonX5.Name = "buttonX5";
             this.buttonX5.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(5);
             this.buttonX5.Size = new System.Drawing.Size(79, 31);
@@ -185,7 +190,7 @@
             this.buttonX6.BackColor = System.Drawing.Color.Transparent;
             this.buttonX6.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.buttonX6.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.buttonX6.Location = new System.Drawing.Point(407, 269);
+            this.buttonX6.Location = new System.Drawing.Point(407, 283);
             this.buttonX6.Name = "buttonX6";
             this.buttonX6.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(5);
             this.buttonX6.Size = new System.Drawing.Size(79, 31);
@@ -228,7 +233,7 @@
             // 
             this.slider1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.slider1.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.slider1.Location = new System.Drawing.Point(372, 319);
+            this.slider1.Location = new System.Drawing.Point(372, 321);
             this.slider1.Maximum = 90;
             this.slider1.Name = "slider1";
             this.slider1.Size = new System.Drawing.Size(140, 30);
@@ -244,13 +249,13 @@
             this.buttonX7.BackColor = System.Drawing.Color.Transparent;
             this.buttonX7.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.buttonX7.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.buttonX7.Location = new System.Drawing.Point(407, 163);
+            this.buttonX7.Location = new System.Drawing.Point(407, 118);
             this.buttonX7.Name = "buttonX7";
             this.buttonX7.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(5);
             this.buttonX7.Size = new System.Drawing.Size(79, 31);
             this.buttonX7.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.buttonX7.TabIndex = 15;
-            this.buttonX7.Text = "再玩一次";
+            this.buttonX7.Text = "刷新数字";
             this.buttonX7.Click += new System.EventHandler(this.buttonX7_Click);
             // 
             // label2
@@ -264,12 +269,68 @@
             this.label2.TabIndex = 16;
             this.label2.Text = "搜索算法";
             // 
+            // buttonX8
+            // 
+            this.buttonX8.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonX8.BackColor = System.Drawing.Color.Transparent;
+            this.buttonX8.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.buttonX8.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.buttonX8.Location = new System.Drawing.Point(407, 200);
+            this.buttonX8.Name = "buttonX8";
+            this.buttonX8.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(5);
+            this.buttonX8.Size = new System.Drawing.Size(79, 31);
+            this.buttonX8.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonX8.TabIndex = 17;
+            this.buttonX8.Text = "自定义数字";
+            this.buttonX8.Click += new System.EventHandler(this.buttonX8_Click);
+            // 
+            // buttonX9
+            // 
+            this.buttonX9.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonX9.BackColor = System.Drawing.Color.Transparent;
+            this.buttonX9.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.buttonX9.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.buttonX9.Location = new System.Drawing.Point(407, 159);
+            this.buttonX9.Name = "buttonX9";
+            this.buttonX9.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(5);
+            this.buttonX9.Size = new System.Drawing.Size(79, 31);
+            this.buttonX9.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonX9.TabIndex = 18;
+            this.buttonX9.Text = "重新开始";
+            this.buttonX9.Click += new System.EventHandler(this.buttonX9_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label3.Location = new System.Drawing.Point(125, 353);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(56, 17);
+            this.label3.TabIndex = 19;
+            this.label3.Text = "当前步数";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label4.Location = new System.Drawing.Point(192, 353);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(15, 17);
+            this.label4.TabIndex = 20;
+            this.label4.Text = "0";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::RotatetoSort1.Properties.Resources.背景2;
-            this.ClientSize = new System.Drawing.Size(528, 362);
+            this.ClientSize = new System.Drawing.Size(528, 372);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.buttonX9);
+            this.Controls.Add(this.buttonX8);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.buttonX7);
             this.Controls.Add(this.slider1);
@@ -284,6 +345,8 @@
             this.Controls.Add(this.buttonX1);
             this.Controls.Add(this.pictureBox1);
             this.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "旋转排序";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -311,6 +374,10 @@
         private DevComponents.DotNetBar.ButtonX buttonX7;
         private System.Windows.Forms.Label label2;
         private DevComponents.Editors.ComboItem comboItem3;
+        private DevComponents.DotNetBar.ButtonX buttonX8;
+        private DevComponents.DotNetBar.ButtonX buttonX9;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
     }
 }
 
